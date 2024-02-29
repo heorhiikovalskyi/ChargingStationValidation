@@ -1,0 +1,11 @@
+{
+  "id": "identificación",
+  "type": "tipo",
+  "maxPower": "máxima potencia",
+  "title": "título",
+  "description": "descripción",
+  "address": "dirección",
+  "coordinates": "coordenadas",
+  "public": "público",
+  "chargeConnectors": "conectores de carga"
+}

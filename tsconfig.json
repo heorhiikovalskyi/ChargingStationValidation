@@ -19,12 +19,13 @@
 
     "strict": true /* Enable all strict type-checking options. */,
 
-    "noUnusedLocals": false /* Enable error reporting when local variables aren't read. */,
+    "noUnusedLocals": false,
 
-    "noImplicitReturns": false /* Enable error reporting for codepaths that do not explicitly return in a function. */,
+    "noImplicitReturns": false,
 
-    "allowUnusedLabels": true /* Disable error reporting for  labels. */,
+    "allowUnusedLabels": true,
 
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   }
 }

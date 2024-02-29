@@ -11,4 +11,5 @@ const main = async () => {
 
   app.start();
 };
+
 main();

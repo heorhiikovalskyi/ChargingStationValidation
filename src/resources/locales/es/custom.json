@@ -1,0 +1,4 @@
+{
+  "connectorType": "esperado: 'CCS', 'CHAdeMO', 'Type1', 'Type2'",
+  "emptyString": "la cadena no debe estar vacía o solo contener '-'"
+}

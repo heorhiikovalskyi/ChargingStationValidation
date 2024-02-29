@@ -1,0 +1,11 @@
+{
+  "id": "id",
+  "type": "type",
+  "maxPower": "max power",
+  "title": "title",
+  "description": "description",
+  "address": "address",
+  "coordinates": "coordinates",
+  "public": "public",
+  "chargeConnectors": "charge connectors"
+}

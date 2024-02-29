@@ -1,0 +1,4 @@
+{
+  "connectorType": "expected: 'CCS', 'CHAdeMO', 'Type1', 'Type2'",
+  "emptyString": "string should not be empty or just -"
+}

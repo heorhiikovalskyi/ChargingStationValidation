@@ -1,22 +1,18 @@
 import { Request, Response, NextFunction } from 'express';
-import { ValidationError } from './types/classes/Errors';
 import { ZodError } from 'zod';
-import { LocalError } from './types/classes/Errors';
+import { CustomError } from './types/Errors';
+import { i18next } from './i18';
 
 class ErrorHandler {
-  validation = (err: unknown, req: Request, res: Response, next: NextFunction) => {
-    if (err instanceof ValidationError) {
-      const { code, message } = err;
-      return res.status(code).send(message);
-    }
-    next(err);
-  };
-
   zod = (err: unknown, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof ZodError) {
       const { issues } = err;
-      const errors: LocalError[] = [];
-      issues.forEach((issue) => errors.push({ field: issue.path, description: issue.message }));
+      const errors: CustomError[] = [];
+      issues.forEach((issue) => {
+        const field: (string | number)[] = [];
+        issue.path.forEach((e) => field.push(typeof e === 'string' ? i18next.t(`fields:${e}`) : e));
+        errors.push({ field, description: issue.message });
+      });
       return res.status(400).send(errors);
     }
     next(err);

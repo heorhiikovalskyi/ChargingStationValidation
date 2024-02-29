@@ -3,7 +3,7 @@ import tryCatch from '../tryCatch';
 import Controller from './Controller';
 import { PrivateStationSchema } from '../ValidationSchemas/PrivateStation';
 import { PublicStationSchema } from '../ValidationSchemas/PublicStation';
-import { ValidationError } from '../types/classes/Errors';
+import { i18next } from '../i18';
 
 class ValidationController extends Controller {
   constructor() {
@@ -13,7 +13,9 @@ class ValidationController extends Controller {
   private validation = async (req: Request, res: Response) => {
     const { station } = req.body;
 
-    if (!station) throw new ValidationError('station isn`t provided');
+    const language = req.headers['accept-language'];
+
+    await i18next.changeLanguage(language);
 
     if (station.public) {
       PublicStationSchema.parse(station);

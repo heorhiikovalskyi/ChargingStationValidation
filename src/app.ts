@@ -2,7 +2,7 @@ import express from 'express';
 import Controller from './controllers/Controller';
 import cors from 'cors';
 import ErrorHandler from './ErrorHandler';
-const { zod, server, validation } = new ErrorHandler();
+const { zod, server } = new ErrorHandler();
 
 class App {
   app: express.Application;
@@ -31,12 +31,12 @@ class App {
     });
   }
 
-  private initializeMiddlewares() {
+  private async initializeMiddlewares() {
     this.app.use(cors());
     this.app.use(express.json());
   }
+
   private initializeErrorHandlers() {
-    this.app.use(validation);
     this.app.use(zod);
     this.app.use(server);
   }

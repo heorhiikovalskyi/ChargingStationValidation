@@ -1,5 +1,5 @@
-import { z } from 'zod';
+import { z } from '../zod';
 
 export const ValidStringSchema = z
   .string()
-  .refine((val) => val !== '' && val !== '-', `string should not be emty or "-"`);
+  .refine((val) => val !== '' && val !== '-', { params: { i18n: 'emptyString' } });
