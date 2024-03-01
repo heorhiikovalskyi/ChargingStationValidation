@@ -1,4 +1,3 @@
-import { zodI18nMap } from 'zod-i18n-map';
 import { z } from '../zod';
 
 import { ConnectorSchema } from './Connector';

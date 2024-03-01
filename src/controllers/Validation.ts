@@ -4,6 +4,7 @@ import Controller from './Controller';
 import { PrivateStationSchema } from '../ValidationSchemas/PrivateStation';
 import { PublicStationSchema } from '../ValidationSchemas/PublicStation';
 import { i18next } from '../i18';
+import { languages } from '../languages';
 
 class ValidationController extends Controller {
   constructor() {
@@ -13,7 +14,9 @@ class ValidationController extends Controller {
   private validation = async (req: Request, res: Response) => {
     const { station } = req.body;
 
-    const language = req.headers['accept-language'];
+    let language = req.headers['accept-language'];
+
+    if (!languages || !languages.includes(language!)) language = 'en';
 
     await i18next.changeLanguage(language);
 
