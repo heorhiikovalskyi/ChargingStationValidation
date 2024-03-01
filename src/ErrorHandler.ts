@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodError } from 'zod';
-import { CustomError } from './types/Errors';
+import { CustomError } from './errors/CustomError';
+import { InvalidLanguage } from './errors/InvalidLanguage';
 import { i18next } from './i18';
 
 class ErrorHandler {
@@ -15,6 +16,11 @@ class ErrorHandler {
       });
       return res.status(400).send(errors);
     }
+    next(err);
+  };
+
+  language = (err: unknown, req: Request, res: Response, next: NextFunction) => {
+    if (err instanceof InvalidLanguage) return res.status(err.code).json(err.message);
     next(err);
   };
 

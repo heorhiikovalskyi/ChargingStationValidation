@@ -2,7 +2,7 @@ import express from 'express';
 import Controller from './controllers/Controller';
 import cors from 'cors';
 import ErrorHandler from './ErrorHandler';
-const { zod, server } = new ErrorHandler();
+const { zod, server, language } = new ErrorHandler();
 
 class App {
   app: express.Application;
@@ -25,7 +25,7 @@ class App {
       console.log(error);
     }
   }
-  
+
   private initializeControllers() {
     this.controllers.forEach((controller) => {
       this.app.use(controller.path, controller.router);
@@ -39,6 +39,7 @@ class App {
 
   private initializeErrorHandlers() {
     this.app.use(zod);
+    this.app.use(language);
     this.app.use(server);
   }
 }

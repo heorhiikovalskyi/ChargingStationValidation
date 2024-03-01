@@ -9,6 +9,8 @@ import spanishCustom from './resources/locales/es/custom.json';
 import englishFields from './resources/locales/en/fields.json';
 import spainishFields from './resources/locales/es/fields.json';
 
+import { languages } from './languages';
+
 i18next.init({
   resources: {
     es: {
@@ -22,8 +24,8 @@ i18next.init({
       fields: englishFields,
     },
   },
-  preload: ['en', 'es'],
-  supportedLngs: ['en', 'es'],
+  preload: languages,
+  supportedLngs: languages,
 });
 
 export { i18next };

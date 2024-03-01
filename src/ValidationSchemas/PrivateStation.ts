@@ -1,4 +1,4 @@
-import { z } from '../zod';
+import { z } from '../zod/zod';
 import { ConnectorSchema } from './Connector';
 import { ValidStringSchema } from './ValidString';
 import { IdSchema } from './Id';

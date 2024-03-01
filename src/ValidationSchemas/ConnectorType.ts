@@ -1,4 +1,4 @@
-import { z } from '../zod';
+import { z } from '../zod/zod';
 const connectorTypes: [string, ...string[]] = ['CCS', 'CHAdeMO', 'Type1', 'Type2'];
 
 export const ConnectorTypeSchema = z

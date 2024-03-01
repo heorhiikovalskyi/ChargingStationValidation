@@ -5,6 +5,7 @@ import { PrivateStationSchema } from '../ValidationSchemas/PrivateStation';
 import { PublicStationSchema } from '../ValidationSchemas/PublicStation';
 import { i18next } from '../i18';
 import { languages } from '../languages';
+import { InvalidLanguage } from '../errors/InvalidLanguage';
 
 class ValidationController extends Controller {
   constructor() {
@@ -16,7 +17,9 @@ class ValidationController extends Controller {
 
     let language = req.headers['accept-language'];
 
-    if (!languages || !languages.includes(language!)) language = 'en';
+    if (!language) language = 'en';
+
+    if (!languages.includes(language)) throw new InvalidLanguage();
 
     await i18next.changeLanguage(language);
 
